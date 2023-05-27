@@ -5,8 +5,15 @@ public class Main {
         for (int i = 0; i < words.length ; i++) {
             linearProping.insertHashTable(words[i]);
         }
+        linearProping.displayHashTable();
     String word = "doag";
         System.out.printf("\"%s\" %s",word, linearProping.contains(word)?" was found":" was not found");
+
+        QuadraticProbing quadraticProbing = new QuadraticProbing(20);
+        for (int i = 0; i < words.length ; i++) {
+            quadraticProbing.insertKey(words[i]);
+        }
+        quadraticProbing.displayHashTable();
 
     }
 }

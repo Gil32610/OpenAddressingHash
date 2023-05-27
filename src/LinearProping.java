@@ -92,11 +92,11 @@ public class LinearProping {
             int newIndex = i % size;
             if (hashTable[newIndex] != null && hashTable[newIndex].equals(word)) {
                 hashTable[newIndex] = null;
-                System.out.printf("\"%s\" was removed from the table", word);
+                System.out.printf("\"%s\" was removed from the table\n", word);
                 return;
             }
         }
-        System.out.printf("\"%s\" was not found on the table", word);
+        System.out.printf("\"%s\" was not found on the table\n", word);
 
     }
 

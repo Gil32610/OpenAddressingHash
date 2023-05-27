@@ -52,10 +52,10 @@ public class QuadraticProbing {
             if(hashTable[newIndex] == null){
                 hashTable[newIndex] = word;
                 usedCells++;
-                System.out.printf("\"%s\" was added to the hash table",word);
+                System.out.printf("\"%s\" was added to the hash table\n",word);
                break;
             }else{
-                System.out.printf("%d index occupied",newIndex);
+                System.out.printf("%d index occupied\n",newIndex);
             }
             counter++;
         }
