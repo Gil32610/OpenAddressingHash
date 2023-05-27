@@ -75,15 +75,29 @@ public class LinearProping {
         }
     }
 
-    public boolean contains(String word){
+    public boolean contains(String word) {
         int index = modASCIIHashFunction(word);
-        for (int i = index; i < size+index; i++) {
-            int newIndex = i%size;
-            if(hashTable[newIndex]!= null && hashTable[newIndex].equals(word)){
+        for (int i = index; i < size + index; i++) {
+            int newIndex = i % size;
+            if (hashTable[newIndex] != null && hashTable[newIndex].equals(word)) {
                 return true;
             }
         }
         return false;
+    }
+
+    public void deleteKey(String word) {
+        int index = modASCIIHashFunction(word);
+        for (int i = index; i < size + index; i++) {
+            int newIndex = i % size;
+            if (hashTable[newIndex] != null && hashTable[newIndex].equals(word)) {
+                hashTable[newIndex] = null;
+                System.out.printf("\"%s\" was removed from the table", word);
+                return;
+            }
+        }
+        System.out.printf("\"%s\" was not found on the table", word);
+
     }
 
 

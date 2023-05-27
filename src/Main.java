@@ -5,6 +5,8 @@ public class Main {
         for (int i = 0; i < words.length ; i++) {
             linearProping.insertHashTable(words[i]);
         }
+    String word = "doag";
+        System.out.printf("\"%s\" %s",word, linearProping.contains(word)?" was found":" was not found");
 
     }
 }
