@@ -28,7 +28,7 @@ public class LinearProping {
     }
 
     //rehashing method if load factor exceeds .75
-    public void rehashKeys(String word) {
+    private void rehashKeys(String word) {
         usedCells = 0;
         ArrayList<String> data = new ArrayList<String>();
         for (String s : hashTable) {
@@ -52,12 +52,12 @@ public class LinearProping {
                 int newIndex = i % size;
                 if (hashTable[newIndex] == null) {
                     hashTable[newIndex] = word;
-                    System.out.printf("INSERTED AT %d%s  INDEX", newIndex + 1, newIndex == 0 ? "st" : newIndex == 1 ? "nd" :
+                    System.out.printf("\"%s\" INSERTED AT %d%s  INDEX\n", word, newIndex + 1, newIndex == 0 ? "st" : newIndex == 1 ? "nd" :
                             newIndex == 2 ?
                                     "rd" : "th");
                     break;
                 } else {
-                    System.out.printf("%d INDEX OCCUPIED", newIndex);
+                    System.out.printf("%d INDEX OCCUPIED\n", newIndex);
                 }
             }
             usedCells++;
