@@ -1,10 +1,67 @@
+import java.util.ArrayList;
+
 public class LinearProping {
-   private String[] hashTable;
+    private String[] hashTable;
     private int usedCells;
 
-    public LinearProping(int size){
+    private int size;
+
+    public LinearProping(int size) {
         hashTable = new String[size];
         usedCells = 0;
+        this.size = size;
+    }
+
+    public int modASCIIHashFunction(String word) {
+        char ch[];
+        ch = word.toCharArray();
+
+        int i, sum;
+        for (sum = 0, i = 0; i < word.length(); i++) {
+            sum += ch[i];
+        }
+        return sum % size;
+    }
+
+    public double getLoadFactor() {
+        return usedCells * 1 / size;
+    }
+
+    //rehashing method if load factor exceeds .75
+    public void rehashKeys(String word) {
+        usedCells = 0;
+        ArrayList<String> data = new ArrayList<String>();
+        for (String s : hashTable) {
+            if (s != null) {
+                data.add(s);
+            }
+            data.add(word);
+            hashTable = new String[size * 2];
+            for (String string : data) {
+                insertHashTable(string);
+            }
+        }
+    }
+
+    public void insertHashTable(String word) {
+        if (getLoadFactor() >= .75) {
+            rehashKeys(word);
+        } else {
+            int index = modASCIIHashFunction(word);
+            for (int i = index; i < index + size; i++) {
+                int newIndex = i % size;
+                if (hashTable[newIndex] == null) {
+                    hashTable[newIndex] = word;
+                    System.out.printf("INSERTED AT %d%s  INDEX", newIndex + 1, newIndex == 0 ? "st" : newIndex == 1 ? "nd" :
+                            newIndex == 2 ?
+                                    "rd" : "th");
+                    break;
+                } else {
+                    System.out.printf("%d INDEX OCCUPIED", newIndex);
+                }
+            }
+            usedCells++;
+        }
     }
 
 
